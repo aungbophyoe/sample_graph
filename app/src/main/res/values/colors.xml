@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="orange">#E0633C</color>
+    <color name="green_light">#1AAA56</color>
+    <color name="version_update">#EF7E53</color>
+    <color name="google_bg">#DC4234</color>
+    <color name="tintColor">#515151</color>
+    <color name="v2_colorAccent_light">#5773EF</color>
+    <color name="payment">#E8EAF4</color>
+    <color name="progressBG">#192A3F68</color>
+    <color name="red_light">#EF5555</color>
+    <color name="cardYellow">#FFD600</color>
+</resources>
