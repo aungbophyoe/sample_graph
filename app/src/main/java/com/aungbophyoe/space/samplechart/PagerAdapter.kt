@@ -2,17 +2,20 @@ package com.aungbophyoe.space.samplechart
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.aungbophyoe.space.samplechart.view.OneFragment
+import com.aungbophyoe.space.samplechart.view.TwoFragment
 
 class PagerAdapter(fm: FragmentManager, private var tabCount: Int) :
-    FragmentStateAdapter(fm) {
+    FragmentStatePagerAdapter(fm) {
     override fun getCount(): Int {
-        TODO("Not yet implemented")
+        return tabCount
     }
 
     override fun getItem(position: Int): Fragment {
-        TODO("Not yet implemented")
+        return when(position){
+            0-> OneFragment()
+            else -> TwoFragment()
+        }
     }
 }

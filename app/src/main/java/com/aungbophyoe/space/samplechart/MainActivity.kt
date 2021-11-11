@@ -11,8 +11,10 @@ import androidx.core.view.setPadding
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.viewpager.widget.ViewPager
 import com.aungbophyoe.space.samplechart.view.OneFragment
 import com.aungbophyoe.space.samplechart.view.TwoFragment
+import com.google.android.material.tabs.TabLayout
 
 
 class MainActivity : AppCompatActivity(),View.OnClickListener {
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private var currentPage : Int = 1
+
+    private lateinit var pagerAdapter: PagerAdapter
 
     private fun setDataBind(list:ArrayList<Grade>){
         mainChart.removeAllViews()
@@ -88,6 +92,27 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         val remove = findViewById<Button>(R.id.remove)
         val viewOne = findViewById<Button>(R.id.viewOne)
         val viewTwo = findViewById<Button>(R.id.viewTwo)
+        val viewPager = findViewById<ViewPager>(R.id.view_pager)
+        val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
+        tabLayout.addTab(tabLayout.newTab().setText("One"))
+        tabLayout.addTab(tabLayout.newTab().setText("Two"))
+        pagerAdapter = PagerAdapter(supportFragmentManager,tabLayout.tabCount)
+        viewPager.adapter = pagerAdapter
+        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                viewPager.currentItem = tab!!.position
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+        })
         val list : ArrayList<Grade> = arrayListOf()
         list.add(Grade(0,5f,"F",R.color.red_light))
         list.add(Grade(1,5f,"A",R.color.v2_colorAccent_light))
@@ -131,26 +156,12 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
 
         }
 
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            val bundle = bundleOf("classId" to "100")
-            add<OneFragment>(R.id.fragment_container_view,args = bundle)
-        }
-
         viewOne.setOnClickListener {
             currentPage = 1
-            supportFragmentManager.commit {
-                val bundle = bundleOf("classId" to "100")
-                replace<OneFragment>(R.id.fragment_container_view,args = bundle)
-            }
         }
 
         viewTwo.setOnClickListener {
             currentPage = 2
-            supportFragmentManager.commit {
-                val bundle = bundleOf("classId" to "100")
-                replace<TwoFragment>(R.id.fragment_container_view)
-            }
         }
         Log.d("lifecycle","onCreate")
 
@@ -169,20 +180,6 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
     override fun onResume() {
         super.onResume()
         Log.d("lifecycle","onResume")
-        when(currentPage){
-            1->{
-                supportFragmentManager.commit {
-                    val bundle = bundleOf("classId" to "100")
-                    replace<OneFragment>(R.id.fragment_container_view,args = bundle)
-                }
-            }
-            2->{
-                supportFragmentManager.commit {
-                    val bundle = bundleOf("classId" to "100")
-                    replace<TwoFragment>(R.id.fragment_container_view)
-                }
-            }
-        }
 
     }
 

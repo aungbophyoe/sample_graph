@@ -82,7 +82,7 @@
         android:layout_below="@id/llTag">
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/class_tab_layout"
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:focusableInTouchMode="true"
