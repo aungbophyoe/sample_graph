@@ -75,12 +75,39 @@
             android:id="@+id/viewTwo"/>
     </LinearLayout>
 
-    <androidx.fragment.app.FragmentContainerView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@id/llTag"
-        android:id="@+id/fragment_container_view"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/llGoogleTag"
+        android:layout_below="@id/llTag">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/class_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:focusableInTouchMode="true"
+            app:tabTextColor="@color/white"
+            app:tabRippleColor="@color/white"
+            app:tabSelectedTextColor="@color/v2_colorAccent_light"
+            app:tabIndicatorColor="@color/white"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="54dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"/>
+
+    </RelativeLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_below="@id/llGoogleTag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager"/>
 
 
 </RelativeLayout>
