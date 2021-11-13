@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.OneFragment">
 
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvData"
-        android:text="Blur blur blur" />
+        android:id="@+id/llSmallTab"
+        >
 
-</FrameLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/smallTab"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:focusableInTouchMode="true"
+            app:tabTextColor="@color/tintColor"
+            app:tabRippleColor="@color/white"
+            app:tabSelectedTextColor="@color/v2_colorAccent_light"
+            app:tabIndicatorColor="@color/v2_colorAccent_light"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"/>
+
+    </RelativeLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_below="@id/llSmallTab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pager"/>
+
+</RelativeLayout>

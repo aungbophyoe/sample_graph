@@ -90,8 +90,6 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         setContentView(R.layout.activity_main)
         val add = findViewById<Button>(R.id.add)
         val remove = findViewById<Button>(R.id.remove)
-        val viewOne = findViewById<Button>(R.id.viewOne)
-        val viewTwo = findViewById<Button>(R.id.viewTwo)
         val viewPager = findViewById<ViewPager>(R.id.view_pager)
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         tabLayout.addTab(tabLayout.newTab().setText("One"))
@@ -156,13 +154,6 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
 
         }
 
-        viewOne.setOnClickListener {
-            currentPage = 1
-        }
-
-        viewTwo.setOnClickListener {
-            currentPage = 2
-        }
         Log.d("lifecycle","onCreate")
 
     }

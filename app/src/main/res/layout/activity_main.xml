@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -52,41 +53,18 @@
         android:backgroundTint="@color/purple_200"
         android:id="@+id/remove"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llTag"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/add"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="One"
-            android:backgroundTint="@color/v2_colorAccent_light"
-            android:id="@+id/viewOne"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Two"
-            android:backgroundTint="@color/v2_colorAccent_light"
-            android:id="@+id/viewTwo"/>
-    </LinearLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/llGoogleTag"
-        android:layout_below="@id/llTag">
+        android:layout_below="@id/add">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:focusableInTouchMode="true"
-            app:tabTextColor="@color/white"
+            app:tabTextColor="@color/tintColor"
             app:tabRippleColor="@color/white"
             app:tabSelectedTextColor="@color/v2_colorAccent_light"
             app:tabIndicatorColor="@color/white"
@@ -96,10 +74,10 @@
 
         <View
             android:layout_width="2dp"
-            android:layout_height="54dp"
-            android:background="@color/cardview_dark_background"
+            android:layout_height="49dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"/>
+            android:layout_marginTop="7dp"
+            android:background="@color/gray" />
 
     </RelativeLayout>
 
