@@ -15,6 +15,7 @@
     <color name="google_bg">#DC4234</color>
     <color name="tintColor">#515151</color>
     <color name="v2_colorAccent_light">#5773EF</color>
+    <color name="v2_colorAccent">#3550C8</color>
     <color name="payment">#E8EAF4</color>
     <color name="progressBG">#192A3F68</color>
     <color name="red_light">#EF5555</color>
