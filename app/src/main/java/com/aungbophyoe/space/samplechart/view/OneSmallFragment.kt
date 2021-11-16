@@ -62,12 +62,13 @@ class OneSmallFragment : Fragment(R.layout.fragment_small_one) {
         myData.add(Grading(5,"A",82))
         myData.forEachIndexed { index, grading ->
             entries.add(BarEntry(index.toFloat(),(grading.percent).toFloat()))
-            xLabels.add(grading.assignmentNo.toString())
+            xLabels.add("${grading.assignmentNo}")
         }
         val dataSet = BarDataSet(entries,"Grading")
 //        dataSet.color = resources.getColor(R.color.v2_colorAccent_light)
         dataSet.setGradientColor(resources.getColor(R.color.v2_colorAccent),resources.getColor(R.color.v2_colorAccent_light))
         dataSet.valueFormatter = XAxisValueFormatter()
+        dataSet.valueTextColor = resources.getColor(R.color.v2_colorAccent_light)
         val barData = BarData(dataSet)
         barData.barWidth = 0.1f
         chart.data = barData
@@ -152,6 +153,10 @@ class OneSmallFragment : Fragment(R.layout.fragment_small_one) {
     }
 
     class XAxisValueFormatter : ValueFormatter(){
+        override fun getFormattedValue(value: Float): String {
+            return "${value.toInt()}%"
+        }
+
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             /*axis?.setLabelCount(0,true)*/
             return "${value.toInt()}%"
