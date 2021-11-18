@@ -14,6 +14,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.github.mikephil.charting.model.GradientColor
 
 class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
 
@@ -24,8 +25,7 @@ class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
         val entries : ArrayList<BarEntry> = arrayListOf()
         val xLabels : ArrayList<String > = arrayListOf()
         val yLabels : ArrayList<String> = arrayListOf()
-        val lastData : ArrayList<Grading> = arrayListOf()
-        val lastEntries : ArrayList<BarEntry> = arrayListOf()
+        val colors : ArrayList<GradientColor> = arrayListOf()
         val bars : ArrayList<IBarDataSet> = arrayListOf()
         yLabels.add("0%")
         yLabels.add("20%")
@@ -38,34 +38,32 @@ class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
         myData.add(Grading("3", "B", 67))
         myData.add(Grading("4", "A*", 92))
         myData.add(Grading("5", "A", 82))
+        myData.add(Grading("Total\nAvg", "A", 75))
         myData.forEachIndexed { index, grading ->
             entries.add(BarEntry(index.toFloat(),(grading.percent).toFloat()))
             xLabels.add("${grading.assignmentNo}")
+            if(index==myData.size-1){
+                colors.add(GradientColor(resources.getColor(R.color.v2_colorAccent),resources.getColor(R.color.v2_colorAccent_light)))
+            }else{
+                colors.add(GradientColor(resources.getColor(R.color.teal_700),resources.getColor(R.color.green_light)))
+            }
         }
 
-        lastData.add(Grading("Total\nAvg", "A", 75))
-        lastData.forEachIndexed{index, grading ->
-            lastEntries.add(BarEntry(index.toFloat(),(grading.percent).toFloat()))
-            xLabels.add("${grading.assignmentNo}")
-        }
-
-
-        // normal data
         val dataSet = BarDataSet(entries,"Grading")
-        dataSet.setGradientColor(resources.getColor(R.color.v2_colorAccent),resources.getColor(R.color.v2_colorAccent_light))
+        dataSet.gradientColors = colors
+        /*dataSet.setGradientColor(resources.getColor(R.color.v2_colorAccent),resources.getColor(R.color.v2_colorAccent_light))*/
         dataSet.valueFormatter = XAxisValueFormatter()
-        dataSet.valueTextColor = resources.getColor(R.color.v2_colorAccent_light)
+        dataSet.valueTextColor = resources.getColor(R.color.tintColor)
         bars.add(dataSet)
 
-        val lastDataSet = BarDataSet(lastEntries,"Avg")
-        lastDataSet.setGradientColor(resources.getColor(R.color.teal_700),resources.getColor(R.color.green_light))
+        /*val lastDataSet = BarDataSet(lastEntries,"Avg")
+        *//*lastDataSet.setGradientColor(resources.getColor(R.color.teal_700),resources.getColor(R.color.green_light))*//*
         lastDataSet.valueFormatter = XAxisValueFormatter()
         lastDataSet.valueTextColor = resources.getColor(R.color.green_light)
-        bars.add(lastDataSet)
+        bars.add(lastDataSet)*/
 
         val barData = BarData(bars)
         barData.barWidth = 0.2f
-        barData.groupBars(1f,1f,1f)
         chart.data = barData
 
 
