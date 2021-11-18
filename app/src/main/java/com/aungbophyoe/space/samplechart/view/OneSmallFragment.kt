@@ -70,7 +70,7 @@ class OneSmallFragment : Fragment(R.layout.fragment_small_one) {
         dataSet.valueFormatter = XAxisValueFormatter()
         dataSet.valueTextColor = resources.getColor(R.color.v2_colorAccent_light)
         val barData = BarData(dataSet)
-        barData.barWidth = 0.1f
+        barData.barWidth = 0.2f
         chart.data = barData
         val xAxis = chart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
