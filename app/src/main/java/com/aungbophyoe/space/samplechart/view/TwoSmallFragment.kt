@@ -33,11 +33,11 @@ class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
         yLabels.add("60%")
         yLabels.add("80%")
         yLabels.add("100%")
-        myData.add(Grading("1", "C", 50))
-        myData.add(Grading("2", "A", 78))
-        myData.add(Grading("3", "B", 67))
-        myData.add(Grading("4", "A*", 92))
-        myData.add(Grading("5", "A", 82))
+        myData.add(Grading("1", "C", 2))
+        myData.add(Grading("2", "A", 2))
+        myData.add(Grading("3", "B", 2))
+        myData.add(Grading("4", "A*", 2))
+        myData.add(Grading("5", "A", 2))
         myData.add(Grading("Total\nAvg", "A", 75))
         myData.forEachIndexed { index, grading ->
             entries.add(BarEntry(index.toFloat(),(grading.percent).toFloat()))
@@ -55,12 +55,6 @@ class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
         dataSet.valueFormatter = XAxisValueFormatter()
         dataSet.valueTextColor = resources.getColor(R.color.tintColor)
         bars.add(dataSet)
-
-        /*val lastDataSet = BarDataSet(lastEntries,"Avg")
-        *//*lastDataSet.setGradientColor(resources.getColor(R.color.teal_700),resources.getColor(R.color.green_light))*//*
-        lastDataSet.valueFormatter = XAxisValueFormatter()
-        lastDataSet.valueTextColor = resources.getColor(R.color.green_light)
-        bars.add(lastDataSet)*/
 
         val barData = BarData(bars)
         barData.barWidth = 0.2f
@@ -111,12 +105,12 @@ class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
         chart.invalidate()
     }
 
-    class XAxisValueFormatter : ValueFormatter(){
+    private class XAxisValueFormatter : ValueFormatter(){
 
         override fun getFormattedValue(value: Float): String {
             /*return "${value.toInt()}%"*/
             return when(value.toInt()){
-                in 0..19 -> {"E"}
+                in 0..19 -> {""}
                 in 20..39 -> {"D"}
                 in 40..59 -> {"C"}
                 in 60..79 -> {"B"}
@@ -128,7 +122,7 @@ class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             /*axis?.setLabelCount(0,true)*/
             return when(value.toInt()){
-                in 0..19 -> {"E"}
+                in 0..19 -> {""}
                 in 20..39 -> {"D"}
                 in 40..59 -> {"C"}
                 in 60..79 -> {"B"}
@@ -138,7 +132,7 @@ class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
         }
     }
 
-    class MyAxisValueFormatter : ValueFormatter() {
+    private class MyAxisValueFormatter : ValueFormatter() {
 
         /*override fun getFormattedValue(value: Float): String {
             return "${value.toInt()}%"
@@ -150,7 +144,7 @@ class TwoSmallFragment:Fragment(R.layout.fragment_small_two) {
         }
     }
 
-    data class Grading(
+    private data class Grading(
         val assignmentNo: String,
         val grade : String,
         val percent : Int
